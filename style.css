@@ -80,3 +80,20 @@
     flex-direction: column;
   }
 }
+/* CEO PHOTO SIZE FIX */
+.ceo-photo {
+  width: 150px !important;
+  height: 180px !important;
+  margin: 20px auto !important;
+  overflow: hidden;
+  border-radius: 18px !important;
+  border: 2px solid #9b63ff;
+}
+
+.ceo-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  display: block;
+}
