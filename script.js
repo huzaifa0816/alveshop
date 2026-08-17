@@ -1,0 +1,1 @@
+function buy(product){alert(product + " selected!\n\nConnect your payment gateway here to complete checkout.");}
