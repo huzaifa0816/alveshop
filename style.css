@@ -11,3 +11,72 @@
   display: block;
   object-fit: cover;
 }
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 55px 6%;
+  margin: 60px 7%;
+  border: 1px solid #29223f;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #151022, #0d0d14);
+}
+
+.cta-content {
+  max-width: 760px;
+}
+
+.cta h2 {
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.cta p:not(.eyebrow) {
+  color: #9ca3b5;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.cta-badge {
+  min-width: 230px;
+  padding: 25px;
+  border: 1px solid #30274a;
+  border-radius: 18px;
+  background: #111019;
+  text-align: center;
+}
+
+.cta-badge strong {
+  display: block;
+  font-size: 22px;
+}
+
+.cta-badge span {
+  display: block;
+  margin-top: 8px;
+  color: #8f91a3;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 40px 4%;
+  }
+
+  .cta h2 {
+    font-size: 30px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+  }
+}
