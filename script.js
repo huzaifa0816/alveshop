@@ -61,7 +61,7 @@ window.showRegister = function () {
   if (loginTab) loginTab.classList.remove("active");
   if (registerTab) registerTab.classList.add("active");
 };
-async function registerUser() {
+window.registerUser = async function registerUser() {
   const email = document.getElementById("registerEmail").value.trim();
   const password = document.getElementById("registerPassword").value;
   const confirmPassword = document.getElementById("registerConfirm").value;
