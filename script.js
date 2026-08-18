@@ -61,3 +61,39 @@ window.showRegister = function () {
   if (loginTab) loginTab.classList.remove("active");
   if (registerTab) registerTab.classList.add("active");
 };
+async function registerUser() {
+  const email = document.getElementById("registerEmail").value.trim();
+  const password = document.getElementById("registerPassword").value;
+  const confirmPassword = document.getElementById("registerConfirm").value;
+
+  if (!email || !password || !confirmPassword) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert("Registration failed: " + error.message);
+    return;
+  }
+
+  alert(
+    "Account created successfully!\n\nPlease check your email to confirm your account."
+  );
+
+  showLogin();
+}
