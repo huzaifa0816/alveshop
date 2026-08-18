@@ -97,3 +97,227 @@
   object-position: center 20% !important;
   display: block;
 }
+/* =========================
+   ALVE SHOP - LOGIN MODAL
+========================= */
+
+.auth-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-overlay.show {
+  display: flex;
+}
+
+.auth-modal {
+  width: min(850px, 95%);
+  min-height: 470px;
+  display: grid;
+  grid-template-columns: 38% 62%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(150, 80, 255, 0.4);
+  border-radius: 22px;
+  background: #0d0d15;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
+}
+
+/* LEFT SIDE */
+
+.auth-brand {
+  padding: 50px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(125, 45, 255, 0.35), transparent 45%),
+    linear-gradient(145deg, #171025, #090911);
+}
+
+.auth-logo {
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 55px;
+}
+
+.auth-logo span {
+  color: #914cff;
+}
+
+.auth-brand h3 {
+  font-size: 25px;
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+.auth-brand p {
+  color: #9999aa;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* RIGHT SIDE */
+
+.auth-form {
+  padding: 45px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  border: 0;
+  background: transparent;
+  color: #aaa;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.auth-close:hover {
+  color: #fff;
+}
+
+/* TABS */
+
+.auth-tabs {
+  display: flex;
+  gap: 35px;
+  border-bottom: 1px solid #292936;
+  margin-bottom: 28px;
+}
+
+.auth-tabs button {
+  border: 0;
+  background: transparent;
+  color: #888896;
+  padding: 12px 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.auth-tabs button.active {
+  color: #a461ff;
+  border-bottom: 2px solid #8d3dff;
+}
+
+/* INPUTS */
+
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  border-radius: 9px;
+  border: 1px solid #30303d;
+  outline: none;
+  background: #11111a;
+  color: #fff;
+  font-size: 14px;
+}
+
+.auth-form input:focus {
+  border-color: #8d3dff;
+}
+
+/* OPTIONS */
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px 0 20px;
+  font-size: 12px;
+  color: #9292a1;
+}
+
+.auth-options a,
+.auth-bottom a {
+  color: #a45cff;
+  text-decoration: none;
+}
+
+/* BUTTON */
+
+.auth-main-btn {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #7627e8, #9b4dff);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.auth-main-btn:hover {
+  opacity: 0.9;
+}
+
+/* OR */
+
+.auth-or {
+  text-align: center;
+  color: #666675;
+  margin: 20px 0;
+  font-size: 12px;
+}
+
+/* BOTTOM */
+
+.auth-bottom {
+  text-align: center;
+  color: #898995;
+  font-size: 13px;
+}
+
+.auth-message {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 12px;
+  color: #a45cff;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  color: #a45cff;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .auth-modal {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+
+  .auth-brand {
+    display: none;
+  }
+
+  .auth-form {
+    padding: 40px 25px;
+  }
+
+}
