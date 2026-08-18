@@ -1,3 +1,28 @@
+window.loginUser = async function () {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  if (!email || !password) {
+    alert("Please enter your email and password.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  alert("Login successful! Welcome to ALVE SHOP.");
+
+  closeAuthModal();
+
+  console.log("Logged in user:", data.user);
+};
 const SUPABASE_URL = "https://lvjcvmpytnwweckrhtjf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_g8SteLwdjRXBY-BFjXr7_g_NbKk_wt-";
 
