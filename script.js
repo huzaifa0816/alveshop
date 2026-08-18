@@ -6,3 +6,18 @@ const supabaseClient = supabase.createClient(
   SUPABASE_KEY
 );
 function buy(product){alert(product + " selected!\n\nConnect your payment gateway here to complete checkout.");}
+function openAuthModal() {
+  const modal = document.getElementById("authModal");
+
+  if (modal) {
+    modal.classList.add("show");
+  }
+}
+
+function closeAuthModal() {
+  const modal = document.getElementById("authModal");
+
+  if (modal) {
+    modal.classList.remove("show");
+  }
+}
