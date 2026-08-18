@@ -62,6 +62,31 @@ window.showRegister = function () {
   if (registerTab) registerTab.classList.add("active");
 };
 window.registerUser = async function registerUser() {
+  window.loginUser = async function () {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  if (!email || !password) {
+    alert("Please enter your email and password.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  alert("Login successful! Welcome to ALVE SHOP.");
+
+  closeAuthModal();
+
+  console.log("Logged in user:", data.user);
+};
   const email = document.getElementById("registerEmail").value.trim();
   const password = document.getElementById("registerPassword").value;
   const confirmPassword = document.getElementById("registerConfirm").value;
