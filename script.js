@@ -36,3 +36,28 @@ function showRegister() {
   document.getElementById("registerTab").classList.add("active");
   document.getElementById("loginTab").classList.remove("active");
 }
+window.showLogin = function () {
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const loginTab = document.getElementById("loginTab");
+  const registerTab = document.getElementById("registerTab");
+
+  if (loginForm) loginForm.style.display = "block";
+  if (registerForm) registerForm.style.display = "none";
+
+  if (loginTab) loginTab.classList.add("active");
+  if (registerTab) registerTab.classList.remove("active");
+};
+
+window.showRegister = function () {
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const loginTab = document.getElementById("loginTab");
+  const registerTab = document.getElementById("registerTab");
+
+  if (loginForm) loginForm.style.display = "none";
+  if (registerForm) registerForm.style.display = "block";
+
+  if (loginTab) loginTab.classList.remove("active");
+  if (registerTab) registerTab.classList.add("active");
+};
