@@ -329,21 +329,24 @@ window.logoutUser = async function () {
 };
 
 document.addEventListener("click", function (e) {
-  const menu = document.getElementById("accountMenu");
+  setTimeout(function () {
+    const menu = document.getElementById("accountMenu");
 
-  if (!menu) return;
+    if (!menu) return;
 
-  const clickedAccountButton =
-    e.target.closest("#loginButton") ||
-    e.target.closest("button");
+    // Account menu-এর ভিতরে click করলে কিছু হবে না
+    if (menu.contains(e.target)) return;
 
-  if (e.target.closest("#accountMenu")) {
-    return;
-  }
+    // My Account button-এ click করলে কিছু হবে না
+    const buttons = document.querySelectorAll("button");
 
-  if (clickedAccountButton) {
-    return;
-  }
+    for (const button of buttons) {
+      if (button.textContent.trim().includes("My Account")) {
+        if (button.contains(e.target)) return;
+      }
+    }
 
-  menu.remove();
+    // অন্য জায়গায় click করলে menu বন্ধ
+    menu.remove();
+  }, 0);
 });
