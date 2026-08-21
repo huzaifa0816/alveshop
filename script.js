@@ -187,12 +187,33 @@ function showAccountMenu() {
   const menu = document.createElement("div");
   menu.id = "accountMenu";
 
-  menu.innerHTML = `
-    <div class="account-menu-title">My Account</div>
-    <div class="account-menu-email" id="accountEmail">Loading...</div>
-    <hr>
-    <button onclick="logoutUser()">Logout</button>
-  `;
+ menu.innerHTML = `
+  <div class="account-menu-title">My Account</div>
+
+  <div class="account-menu-email" id="accountEmail">
+    Loading...
+  </div>
+
+  <hr>
+
+  <button onclick="showProfile()">
+    👤 Profile
+  </button>
+
+  <button onclick="showOrders()">
+    📦 My Orders
+  </button>
+
+  <button onclick="showDownloads()">
+    💾 Downloads
+  </button>
+
+  <hr>
+
+  <button onclick="logoutUser()">
+    🚪 Logout
+  </button>
+`;
 
   document.body.appendChild(menu);
 
@@ -202,7 +223,17 @@ function showAccountMenu() {
     }
   });
 }
+window.showProfile = function () {
+  alert("Profile\n\nYour account email is shown above.");
+};
 
+window.showOrders = function () {
+  alert("My Orders\n\nYour orders will appear here.");
+};
+
+window.showDownloads = function () {
+  alert("Downloads\n\nYour purchased products will appear here.");
+};
 window.logoutUser = async function () {
   const { error } = await supabaseClient.auth.signOut();
 
