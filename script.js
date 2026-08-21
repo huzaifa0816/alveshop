@@ -182,3 +182,45 @@ supabaseClient.auth.onAuthStateChange(function () {
 document.addEventListener("DOMContentLoaded", function () {
   updateAuthButton();
 });
+function showAccountMenu() {
+  const existing = document.getElementById("accountMenu");
+
+  if (existing) {
+    existing.remove();
+    return;
+  }
+
+  const menu = document.createElement("div");
+  menu.id = "accountMenu";
+
+  menu.innerHTML = `
+    <div class="account-menu-title">My Account</div>
+    <div class="account-menu-email" id="accountEmail">Loading...</div>
+    <hr>
+    <button onclick="logoutUser()">Logout</button>
+  `;
+
+  document.body.appendChild(menu);
+
+  supabaseClient.auth.getUser().then(({ data }) => {
+    if (data.user) {
+      document.getElementById("accountEmail").textContent = data.user.email;
+    }
+  });
+}
+
+window.logoutUser = async function () {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    alert("Logout failed: " + error.message);
+    return;
+  }
+
+  const menu = document.getElementById("accountMenu");
+  if (menu) menu.remove();
+
+  updateAuthButton();
+
+  alert("Logged out successfully.");
+};
