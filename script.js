@@ -334,10 +334,8 @@ document.addEventListener("click", function (e) {
 
     if (!menu) return;
 
-    // Account menu-এর ভিতরে click করলে কিছু হবে না
     if (menu.contains(e.target)) return;
 
-    // My Account button-এ click করলে কিছু হবে না
     const buttons = document.querySelectorAll("button");
 
     for (const button of buttons) {
@@ -346,7 +344,6 @@ document.addEventListener("click", function (e) {
       }
     }
 
-    // অন্য জায়গায় click করলে menu বন্ধ
     menu.remove();
   }, 0);
 });
