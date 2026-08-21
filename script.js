@@ -169,9 +169,6 @@ async function updateAuthButton() {
   }
 }
 
-
-}
-
 supabaseClient.auth.onAuthStateChange(function () {
   updateAuthButton();
 });
