@@ -157,9 +157,10 @@ async function updateAuthButton() {
   if (session) {
     loginButton.textContent = "My Account";
     loginButton.onclick = function (e) {
-      e.preventDefault();
-      showAccountMenu();
-    };
+  e.preventDefault();
+  e.stopPropagation();
+  showAccountMenu();
+};
   } else {
     loginButton.textContent = "Login";
     loginButton.onclick = function (e) {
