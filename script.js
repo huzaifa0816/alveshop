@@ -330,17 +330,14 @@ window.logoutUser = async function () {
 
 document.addEventListener("click", function (e) {
   const menu = document.getElementById("accountMenu");
+  const loginButton = document.getElementById("loginButton");
 
-  if (!menu) return;
-
-  // My Account button-এ click করলে menu বন্ধ করবে না
-  const accountButton = e.target.closest("#loginButton");
-
-  // Menu-এর ভিতরে click করলে menu বন্ধ করবে না
-  const clickedInsideMenu = e.target.closest("#accountMenu");
-
-  // বাইরে click করলে menu বন্ধ
-  if (!accountButton && !clickedInsideMenu) {
+  if (
+    menu &&
+    !menu.contains(e.target) &&
+    loginButton &&
+    !loginButton.contains(e.target)
+  ) {
     menu.remove();
   }
 });
