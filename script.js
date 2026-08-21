@@ -327,24 +327,3 @@ window.logoutUser = async function () {
 
   alert("Logged out successfully.");
 };
-document.addEventListener("click", function (e) {
-  const menu = document.getElementById("accountMenu");
-
-  if (!menu) return;
-
-  // Do not close when clicking inside the menu
-  if (menu.contains(e.target)) return;
-
-  // Do not close when clicking the My Account button
-  const accountButton = e.target.closest("button");
-
-  if (
-    accountButton &&
-    accountButton.textContent.trim().includes("My Account")
-  ) {
-    return;
-  }
-
-  // Close the menu when clicking outside
-  menu.remove();
-});
