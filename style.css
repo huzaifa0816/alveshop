@@ -410,3 +410,52 @@
     padding: 40px 25px !important;
   }
 }
+/* ACCOUNT DROPDOWN */
+
+#accountMenu {
+  position: fixed;
+  top: 75px;
+  right: 120px;
+  width: 240px;
+  background: #11101a;
+  border: 1px solid #7c3aed;
+  border-radius: 12px;
+  padding: 15px;
+  z-index: 999999;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.account-menu-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.account-menu-email {
+  font-size: 13px;
+  color: #aaa;
+  word-break: break-all;
+  margin-bottom: 12px;
+}
+
+#accountMenu hr {
+  border: 0;
+  border-top: 1px solid #292534;
+  margin: 10px 0;
+}
+
+#accountMenu button {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#accountMenu button:hover {
+  background: #9333ea;
+}
