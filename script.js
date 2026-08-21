@@ -330,14 +330,20 @@ window.logoutUser = async function () {
 
 document.addEventListener("click", function (e) {
   const menu = document.getElementById("accountMenu");
-  const loginButton = document.getElementById("loginButton");
 
-  if (
-    menu &&
-    !menu.contains(e.target) &&
-    loginButton &&
-    !loginButton.contains(e.target)
-  ) {
-    menu.remove();
+  if (!menu) return;
+
+  const clickedAccountButton =
+    e.target.closest("#loginButton") ||
+    e.target.closest("button");
+
+  if (e.target.closest("#accountMenu")) {
+    return;
   }
+
+  if (clickedAccountButton) {
+    return;
+  }
+
+  menu.remove();
 });
