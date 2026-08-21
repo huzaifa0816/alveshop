@@ -327,3 +327,16 @@ window.logoutUser = async function () {
 
   alert("Logged out successfully.");
 };
+document.addEventListener("click", function (e) {
+  const menu = document.getElementById("accountMenu");
+  const loginButton = document.getElementById("loginButton");
+
+  if (
+    menu &&
+    !menu.contains(e.target) &&
+    loginButton &&
+    !loginButton.contains(e.target)
+  ) {
+    menu.remove();
+  }
+});
