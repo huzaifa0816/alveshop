@@ -169,10 +169,15 @@ async function updateAuthButton() {
   }
 }
 
-function showAccountMenu() {
-  const { data: { user } } = supabaseClient.auth.getSession();
+async function showAccountMenu() {
+  const { data, error } = await supabaseClient.auth.getUser();
 
-  alert("You are logged in!");
+  if (error || !data.user) {
+    alert("User information not found.");
+    return;
+  }
+
+  alert("Logged in as:\n" + data.user.email);
 }
 
 supabaseClient.auth.onAuthStateChange(function () {
