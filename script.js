@@ -223,8 +223,52 @@ function showAccountMenu() {
     }
   });
 }
-window.showProfile = function () {
-  alert("Profile\n\nYour account email is shown above.");
+window.showProfile = async function () {
+  const { data, error } = await supabaseClient.auth.getUser();
+
+  if (error || !data.user) {
+    alert("Please login first.");
+    return;
+  }
+
+  const user = data.user;
+
+  const existing = document.getElementById("profilePanel");
+  if (existing) existing.remove();
+
+  const panel = document.createElement("div");
+  panel.id = "profilePanel";
+
+  panel.innerHTML = `
+    <div class="profile-box">
+      <button class="profile-close" onclick="closeProfile()">×</button>
+
+      <h2>My Profile</h2>
+
+      <div class="profile-avatar">👤</div>
+
+      <div class="profile-info">
+        <label>Email Address</label>
+        <div>${user.email}</div>
+      </div>
+
+      <div class="profile-info">
+        <label>Account Status</label>
+        <div class="verified">✓ Active Account</div>
+      </div>
+
+      <button class="profile-close-btn" onclick="closeProfile()">
+        Close
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(panel);
+};
+
+window.closeProfile = function () {
+  const panel = document.getElementById("profilePanel");
+  if (panel) panel.remove();
 };
 
 window.showOrders = function () {
