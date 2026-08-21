@@ -327,23 +327,24 @@ window.logoutUser = async function () {
 
   alert("Logged out successfully.");
 };
-
 document.addEventListener("click", function (e) {
-  setTimeout(function () {
-    const menu = document.getElementById("accountMenu");
+  const menu = document.getElementById("accountMenu");
 
-    if (!menu) return;
+  if (!menu) return;
 
-    if (menu.contains(e.target)) return;
+  // Do not close when clicking inside the menu
+  if (menu.contains(e.target)) return;
 
-    const buttons = document.querySelectorAll("button");
+  // Do not close when clicking the My Account button
+  const accountButton = e.target.closest("button");
 
-    for (const button of buttons) {
-      if (button.textContent.trim().includes("My Account")) {
-        if (button.contains(e.target)) return;
-      }
-    }
+  if (
+    accountButton &&
+    accountButton.textContent.trim().includes("My Account")
+  ) {
+    return;
+  }
 
-    menu.remove();
-  }, 0);
+  // Close the menu when clicking outside
+  menu.remove();
 });
