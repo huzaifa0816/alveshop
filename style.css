@@ -459,3 +459,30 @@
 #accountMenu button:hover {
   background: #9333ea;
 }
+/* ACCOUNT MENU BUTTON FIX */
+
+#accountMenu button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#accountMenu button:hover {
+  background: #9333ea;
+  transform: translateY(-1px);
+}
+
+#accountMenu hr {
+  border: 0;
+  border-top: 1px solid #302b3d;
+  margin: 12px 0;
+}
