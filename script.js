@@ -271,8 +271,42 @@ window.closeProfile = function () {
   if (panel) panel.remove();
 };
 
-window.showOrders = function () {
-  alert("My Orders\n\nYour orders will appear here.");
+window.showOrders = async function () {
+  const { data: { user }, error: userError } =
+    await supabaseClient.auth.getUser();
+
+  if (userError || !user) {
+    alert("Please login first.");
+    return;
+  }
+
+  const { data: orders, error } = await supabaseClient
+    .from("orders")
+    .select("id, product_name, amount, status, created_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    alert("Could not load orders: " + error.message);
+    return;
+  }
+
+  if (!orders || orders.length === 0) {
+    alert("My Orders\n\nYou don't have any orders yet.");
+    return;
+  }
+
+  let message = "MY ORDERS\n\n";
+
+  orders.forEach((order, index) => {
+    message +=
+      `${index + 1}. ${order.product_name}\n` +
+      `Amount: $${order.amount}\n` +
+      `Status: ${order.status}\n` +
+      `Date: ${new Date(order.created_at).toLocaleDateString()}\n\n`;
+  });
+
+  alert(message);
 };
 
 window.showDownloads = function () {
