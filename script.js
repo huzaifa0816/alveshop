@@ -147,3 +147,38 @@ window.registerUser = async function registerUser() {
 
   showLogin();
 }
+async function updateAuthButton() {
+  const loginButton = document.querySelector(".login-btn");
+
+  if (!loginButton) return;
+
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (session) {
+    loginButton.textContent = "My Account";
+    loginButton.onclick = function (e) {
+      e.preventDefault();
+      showAccountMenu();
+    };
+  } else {
+    loginButton.textContent = "Login";
+    loginButton.onclick = function (e) {
+      e.preventDefault();
+      openAuthModal();
+    };
+  }
+}
+
+function showAccountMenu() {
+  const { data: { user } } = supabaseClient.auth.getSession();
+
+  alert("You are logged in!");
+}
+
+supabaseClient.auth.onAuthStateChange(function () {
+  updateAuthButton();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateAuthButton();
+});
