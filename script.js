@@ -348,14 +348,3 @@ document.addEventListener("click", function (e) {
   // Close the menu when clicking anywhere outside
   menu.remove();
 });
-
-document.addEventListener("click", function (e) {
-  const menu = document.getElementById("accountMenu");
-
-  if (!menu) return;
-
-  // If clicked outside the account menu, close it
-  if (!menu.contains(e.target)) {
-    menu.remove();
-  }
-});
